@@ -41,4 +41,4 @@ Slist* reverse_list(Slist *list);
 
 void display(Slist *list);
 
-#endif // SLIST_H_INCLUDEDm
+#endif // SLIST_H_INCLUDED
