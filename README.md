@@ -6,5 +6,5 @@
 - Delete a particular element 
 - to reverse a list 
 
-  Doubly LINKED LIST OPERATIONS :
+  DOUBLY LINKED LIST OPERATIONS :
 -To add and delete elements 
