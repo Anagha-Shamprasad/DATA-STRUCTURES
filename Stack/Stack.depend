@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1568627815 source:c:\users\shree\documents\anagha\1st sem subjects\ads - data structures\stack\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<assert.h>
+	"stack.h"
+
+1568563273 source:c:\users\shree\documents\anagha\1st sem subjects\ads - data structures\stack\stack.c
+	<assert.h>
+	<stddef.h>
+	<stdint.h>
+	<stdbool.h>
+	"stack.h"
+
+1568627686 c:\users\shree\documents\anagha\1st sem subjects\ads - data structures\stack\stack.h
+	<stdint.h>
+	<stddef.h>
+
