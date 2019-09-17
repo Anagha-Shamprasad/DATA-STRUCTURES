@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1568637656 source:c:\users\shree\documents\anagha\1st sem subjects\ads - data structures\queues\main.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	<stdbool.h>
+	"queue.h"
+
+1568638164 source:c:\users\shree\documents\anagha\1st sem subjects\ads - data structures\queues\queue.c
+	<assert.h>
+	<stdbool.h>
+	<stdio.h>
+	<stdint.h>
+	"queue.h"
+
+1568634985 c:\users\shree\documents\anagha\1st sem subjects\ads - data structures\queues\queue.h
+	<stdint.h>
+	<stddef.h>
+
