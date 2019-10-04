@@ -1,62 +1,121 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
 #include<stdbool.h>
-#include "queue.h"
+#include<assert.h>
+#include<string.h>
+#include "stack.h"
+#include "../Queues/queue.h"
 
-void test(Queue *q,Result *res)
+void test_push(Stack *stk,Status *res)
 {
-    q=q_add(q,res,10);
-    q=q_add(q,res,20);
-    q=q_add(q,res,30);
-    q=q_add(q,res,40);
-    q=q_add(q,res,50);
-    q=q_add(q,res,60);
-    assert(q->count1==5);
-    q=q_delete(q,res);
-    assert(q->count1==4);
-    assert(res->data==10);
-    q=q_delete(q,res);
-    assert(res->data==20);
-    q=q_delete(q,res);
-    q=q_delete(q,res);
-    assert(res->data==40);
-    assert(q->count1==1);
-    q=q_delete(q,res);
-    assert(q->count1==0 && res->data==50);
+    assert(peek(stk,res)==false);
+    assert(stack_status(stk)==0);
+    stk=push(stk,10,res);
+    assert(peek(stk,res)==10);
+     stk=push(stk,20,res);
+      stk=push(stk,30,res);
+       stk=push(stk,40,res);
+        stk=push(stk,50,res);
+         stk=push(stk,60,res);
+         assert(res->status==1);
+    assert(peek(stk,res)==50);
 }
 
-void test_stk_using_queue()
+void test_pop(Stack *stk,Status *res)
 {
+    assert(peek(stk,res)==50);
+    stk=pop(stk,res);
+    assert(peek(stk,res)==40);
+    stk=pop(stk,res);
+    stk=pop(stk,res);
+    stk=pop(stk,res);
+    assert(peek(stk,res)==10);
+    assert(stack_status(stk)==2);
+    stk=pop(stk,res);
+    assert(peek(stk,res)==false);
+    assert(stack_status(stk)==0);
+}
+void test_balance()
+{
+    Stack s=stack_new(5);
+    Stack *stk=&s;
+    Status res;
+    Status *r=&res;
+    char c[]="[{()}][{}]()";
+    assert(balanced(stk,r,c)==true);
+}
+void test_postfix()
+{
+    Stack s=stack_new(5);
+    Stack *stk=&s;
+    Status res;
+    Status *r=&res;
+    char d[]="6523+8*+3+*";
+    int ce=postfix(stk,r,d);
+    assert(288==ce); //returns a zero if both strings are same, and a non zero number otherwise
+}
+
+void test_queues_using_stacks()
+{
+    Stack s=stack_new(5);
+    Stack *stk=&s;
+    Status r;
+    Status *res=&r;
+    res->status=STACK_EMPTY;
+    stk=push(stk,10,res);
+    assert(peek(stk,res)==10);
+     stk=push(stk,20,res);
+      stk=push(stk,30,res);
+    assert(res->status==STATUS_OK);
+       stk=push(stk,40,res);
+        stk=push(stk,50,res);
+    assert(res->status==STACK_FULL);
+    stk=q_pop(stk,res);
+    assert(res->top_ele==10);
+    assert(peek(stk,res)==50);
+}
+
+void test_pgm_5()
+{
+    Stack s=stack_new(5);
+    Stack *stk=&s;
+    Status re;
+    Status *res=&re;
+    res->status=STACK_EMPTY;
     Queue que=queue_new(5);
     Queue *q=&que;
-    Result res;
-    Result *r=&res;
-    q=q_add(q,r,10);
-    q=q_add(q,r,20);
-    q=q_add(q,r,30);
-    q=q_add(q,r,40);
-    q=s_pop(q,r);
-    assert(q_peek(q)==30);
-    q=q_add(q,r,40);
-    assert(q_peek(q)==40);
-    q=q_add(q,r,50);
-    q=q_add(q,r,60);
-    assert(q_peek(q)==50);
-    q=s_pop(q,r);
-    assert(q_peek(q)==40);
-    q=s_pop(q,r);
-    q=s_pop(q,r);
-    q=s_pop(q,r);
-    q=s_pop(q,r);
-    assert(q_peek(q)==false);
+    Result result;
+    Result *r=&result;
+    int ans;
+    stk=push(stk,10,res);
+    assert(peek(stk,res)==10);
+     stk=push(stk,20,res);
+      stk=push(stk,30,res);
+       stk=push(stk,40,res);
+        stk=push(stk,50,res);
+    ans=check_stack_using_queue(stk,res,q,r,30);
+    assert(ans==1 && peek(stk,res)==50);
+    stk=pop(stk,res);
+    ans=check_stack_using_queue(stk,res,q,r,30);
+    assert(ans==1 && peek(stk,res)==40);
+    ans=check_stack_using_queue(stk,res,q,r,50);
+    assert(ans==0 && peek(stk,res)==40);
 }
 int main()
 {
-    Queue que=queue_new(5);
-    Queue *q=&que;
-    Result res;
-    test(q,&res);
-    test_stk_using_queue();
+    Stack s=stack_new(5);
+    Stack *stk=&s;
+    Status res;
+    Status *r=&res;
+    r->status=STACK_EMPTY;
+    test_push(stk,r);
+    test_pop(stk,r);
+    //test_balance();
+    test_postfix();
+    test_queues_using_stacks();
+    test_pgm_5();
+
+
     return 0;
+
 }
