@@ -11,7 +11,5 @@
 
 #ASSIGNMENT 2
 
-main.c - This is the main function for queues ; 
-Assignment 2/main.c - Is the main function for stacks 
-
-The folder Stack Assignment has few problems like implementing Stacks using Queues, and queues using stacks etc. 
+The folder Assignment 2 has Stacks header and source files, and source file of queue. The header file of queue is the file main.c that is outside the folder Asiignment 2 ;
+I have also enclosed the questions related to stacks and queues in the folder Assignment 2 
